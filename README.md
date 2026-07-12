@@ -1,40 +1,66 @@
 # Football Scene Quiz Maker
 
-A web app that uses YOLO segmentation to automatically detect players and the ball in football images, then turns them into interactive silhouette-based quizzes.
+A web app specially developed for [United Hacks v7](https://unitedhacksv7.devpost.com/) Sports Track which is an app to make and play a football scene quiz.
 
-Upload a match photo, and the app generates two masks — one for humans (players, referees, staff) and one for the ball. These masks are used as semi-transparent colored overlays during the quiz. Players answer questions about the scene (e.g. "Which team is attacking?", "Who scored?") while the silhouettes provide visual hints. After confirming an answer, the silhouettes disappear to reveal the full image.
+It uses YOLO26 AI model to help generating cover silhouette for the image being used.
 
-## How it works
+## Interaction
 
-1. **Create** — upload football images, add answer fields (label + correct answer). The server runs YOLO segmentation to extract human and ball masks.
-2. **Play** — questions show the image with red highlights on humans and cyan on the ball. Type your answers, then confirm to reveal the original image and see if you were right.
-3. **Score** — each question is scored: 1 for fully correct, 0.5 for partial, 0.25 if the right answer exists but in the wrong field, 0 otherwise.
+1. **Create** — User able to create quiz deck contain of multiple quiz/questions by uploading football scene image for each quiz and adding question text and answer field.
+2. **Play** — User can play the quiz deck that are created or importing a quiz deck data. Answer all question in the deck by filling the answer field correctly. At the end of the game, player will be given score based on their answer.
 
 All quizzes are stored in browser localStorage — no database or account needed.
 
+## How it works
+
+**Create Quiz System Process**
+
+1. User will create a quiz deck containing multiple quiz by uploading image and input question(optional) and answer fields for each quiz.
+2. AI will determine the silhouette cover for each quiz (the player and the ball)
+3. Quiz deck data created
+4. Export quiz to file (optional)
+
+**Quiz Scoring System**
+
+Player will get a score based on following criteria:
+- All answer field in a quiz being filled correctly = +1pt
+- Only some answer filled in a quiz being filled correctly = +0.5pt
+- Among the filled answer in a quiz, there is correct answer but being put in a wrong field = +0.25pt
+- Otherwise = +0pt
+
 ## Tech stack
 
-- **Backend:** Flask + Ultralytics YOLO + OpenCV
-- **Frontend:** Vanilla JS, Canvas API
-- **Storage:** Browser localStorage, `.fsq` files (ZIP with JSON manifest + images/masks)
+Programming Language
+- Python
+- HTML, CSS, Javascript
 
-## Requirements
+Framework
+- Flask
+
+AI Model
+- YOLO26 Segmentation Model
+
+## Prerequisite
 
 - Python 3.9+
-- [YOLO segmentation model](https://docs.ultralytics.com/tasks/segment/) — place a `.pt` file in `models/` (e.g. `yolo26n-seg.pt`)
+
+Install dependency
+```bash
+pip install -r requirements.txt
+```
 
 ## Setup
 
+Run development server
 ```bash
-pip install -r requirements.txt
 python app.py
 ```
 
 Then open `http://localhost:5000`.
 
-## File format (.fsq)
+## About FSQ File (.fsq)
 
-A `.fsq` file is a ZIP containing:
+A `.fsq` file is just a ZIP file with custom extension name containing:
 
 - `quiz.json` — quiz metadata and question definitions (image filenames, mask filenames, answer fields)
 - `img_N.jpg` — original images
