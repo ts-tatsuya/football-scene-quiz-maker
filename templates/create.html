@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back">&larr; Back</a>
+        <h1>Create Quiz</h1>
+
+        <div class="form-group">
+            <label>Quiz Title</label>
+            <input type="text" id="quizTitle" placeholder="e.g. Champions League Final 2024">
+        </div>
+
+        <div id="questionsContainer"></div>
+
+        <button class="btn-secondary" onclick="addQuestion()">+ Add Question</button>
+        <br><br>
+        <button class="btn" onclick="saveQuiz()">Save Quiz</button>
+        <button class="btn btn-outline" onclick="exportQuiz()" style="margin-left:0.5rem">Export .fsq</button>
+    </div>
+    <script src="/static/js/create.js"></script>
+</body>
+</html>

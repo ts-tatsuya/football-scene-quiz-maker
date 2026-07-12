@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Scene Quiz</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container" id="quizContainer">
+        <a href="/" class="back">&larr; Back</a>
+        <h1 id="quizTitle"></h1>
+        <div class="progress" id="progress">Question 1 of N</div>
+
+        <div class="question-text" id="questionText"></div>
+
+        <div class="image-box">
+            <canvas id="quizCanvas"></canvas>
+        </div>
+
+        <div class="fields" id="fieldsContainer"></div>
+
+        <div class="nav">
+            <button class="btn" id="confirmBtn" onclick="confirmAnswer()">Confirm Answer</button>
+            <button class="btn" id="nextBtn" onclick="nextQuestion()" style="display:none">Next</button>
+            <button class="btn" id="seeResultBtn" onclick="showResults()" style="display:none">See Result</button>
+        </div>
+    </div>
+    <div class="container" id="resultContainer" style="display:none"></div>
+    <script id="playScript" data-quiz-id="{{ quiz_id }}" src="/static/js/play.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+correct = 正解　ピロリロ
+question = デンッ！
+fail = ピアノ　ガーン

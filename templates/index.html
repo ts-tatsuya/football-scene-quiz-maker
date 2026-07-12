@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Scene Quiz</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Football Scene Quiz</h1>
+        <p class="subtitle">Create and play football scene quizzes with silhouette hints</p>
+        <div class="actions">
+            <a href="/create" class="btn">+ Create Quiz</a>
+            <button class="btn btn-outline" onclick="document.getElementById('importInput').click()">Import .fsq</button>
+            <input type="file" id="importInput" accept=".fsq" onchange="importQuiz(this)">
+        </div>
+        <div class="quiz-list" id="quizList">
+            <div class="empty">Loading...</div>
+        </div>
+    </div>
+    <script src="/static/js/index.js"></script>
+</body>
+</html>
