@@ -17,7 +17,7 @@ All quizzes are stored in browser localStorage — no database or account needed
 
 1. User will create a quiz deck containing multiple quiz by uploading image and input question(optional) and answer fields for each quiz.
 2. AI will determine the silhouette cover for each quiz (the player and the ball)
-3. Quiz deck data created
+3. Quiz deck data created and saved on browser storage
 4. Export quiz to file (optional)
 
 **💯Quiz Scoring System💯**
@@ -67,7 +67,7 @@ A `.fsq` file is just a ZIP file with custom extension name containing:
 - `human_N.png` — human segmentation masks
 - `ball_N.png` — ball segmentation masks
 
-## Sound effect used
+## 🔊Sound effect used
 
 All sound effect being used are downloaded from [DOVA-SYNDROME](https://dova-s.jp/)
 
